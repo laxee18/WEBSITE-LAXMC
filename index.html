@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAXMC Community</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            font-family: Arial, sans-serif; /* fallback font */
+            background: url('OIG2.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffcc00;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: -1px 5px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 65px;
+            height: auto; /* agar gambar tetap proporsional */
+            display: block; /* mengatasi margin bawah pada gambar */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1em;
+            font-family: 'Press Start 2P', cursive; /* menggunakan Press Start 2P hanya untuk h1 */
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* bayangan teks */
+            animation: colorChange 7s infinite; /* animasi perubahan warna */
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 65px;
+            height: auto;
+        }
+
+        .logo h1 {
+            margin: 0 20px;
+        }
+
+        @keyframes colorChange {
+            0% { color: #ff0000; }  /* merah */
+            14% { color: #ff7f00; } /* oranye */
+            28% { color: #ffff00; } /* kuning */
+            42% { color: #00ff00; } /* hijau */
+            56% { color: #0000ff; } /* biru */
+            70% { color: #4b0082; } /* nila */
+            84% { color: #9400d3; } /* ungu */
+            100% { color: #ff0000; } /* kembali ke merah */
+        }
+
+        main {
+            padding: 120px 20px 20px;
+            margin-top: 10px; /* menyisipkan margin atas untuk header */
+        }
+
+        section {
+            background: rgba(0, 0, 0, 0.6);
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            text-align: center; /* mengatur teks agar di tengah */
+            color: #fff; /* warna teks di bagian section */
+        }
+
+        section h2 {
+            font-size: 1.5em;
+            color: #ffcc00;
+            padding: 0px;
+            border-radius: 40px;
+            display: inline-block; /* agar elemen h2 bisa diatur lebar sesuai dengan teks */
+        }
+
+        section p, section ul, section ol {
+            font-size: 1em;
+            text-align: left;
+        }
+
+        .join-button, .whatsapp-button {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .join-button:hover, .whatsapp-button:hover {
+            background: none; /* menghilangkan background saat hover */
+        }
+
+        .discord {
+            color: #7289da; /* warna ungu untuk Discord */
+        }
+
+        .whatsapp {
+            color: #25d366; /* warna hijau untuk WhatsApp */
+        }
+
+        .saluran {
+            color: #ff0; /* warna merah untuk Saluran */
+        }
+
+        .youtube {
+            color: #ff0000; /* warna merah untuk YouTube */
+        }
+        
+        .tiktok {
+            color: #9400d3; /* warna merah untuk Tiktok */
+        }
+        
+        .facebook {
+            color: #0088ff; /* warna merah untuk Facebook */
+        }
+
+        .join-button img, .whatsapp-button img {
+            width: 24px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0px;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            section h2 {
+                font-size: 1em;
+            }
+
+            section {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            .join-button, .whatsapp-button {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 101;
+            text-align: center;
+        }
+
+        .popup img {
+            width: 100px; /* atur lebar gambar */
+            height: auto; /* agar gambar tetap proporsional */
+            margin-bottom: 10px; /* jarak antara gambar dan teks */
+        }
+
+        .popup button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background: none; /* menghilangkan background tombol */
+            border: none; /* menghilangkan border tombol */
+        }
+
+        .popup #popup-yes {
+            color: #25d366; /* warna hijau untuk tombol "Iya" */
+        }
+
+        .popup button:not(#popup-yes) {
+            color: #ff0009; /* warna merah untuk tombol "Tidak" */
+        }
+
+        .popup a {
+            color: inherit; /* warna tombol */
+            text-decoration: none;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <div class="logo">
+            <img id="logo-left" src="image1.jpg" alt="LAXMC Logo">
+            <h1>LAXMC Community</h1>
+            <img id="logo-right" src="image1.jpg" alt="LAXMC Logo">
+        </div>
+    </header>
+    <main>
+        <section id="rules">
+            <h2>🎉🥳 WELCOM COEG IN MY WEBSITE 🖕🤪</h2>
+            <h2>Rules Community</h2>
+            <div id="rules-text" style="display: none;">
+                <ol>
+                    <li> Hormati Semua Anggota<br>
+                        ⤿ Perlakukan semua anggota dengan sopan dan hormat. Tidak ada toleransi untuk penghinaan atau pelecehan.</li>
+                    <li> Tidak Ada Spam<br>
+                        ⤿ Hindari mengirim pesan berulang-ulang, tautan yang tidak relevan, atau promosi yang tidak diinginkan.</li>
+                    <li> Gunakan Bahasa yang Sopan<br>
+                        ⤿ Selalu berkomunikasi dengan bahasa yang baik dan sopan. Hindari kata-kata kasar dan provokasi.</li>
+                    <li> Patuhi Aturan Server Minecraft<br>
+                        ⤿ Semua anggota diharuskan mengikuti aturan yang berlaku di server Minecraft LAXMC. Pelanggaran akan dikenakan sanksi.</li>
+                </ol>
+            </div>
+            <br>
+            <button id="show-rules-btn" onclick="toggleRules()">Baca Rules</button>
+            <button id="hide-rules-btn" style="display: none;" onclick="toggleRules()">Tutup Rules</button>
+        </section>
+        <section id="join">
+            <h2>Join Community</h2>
+            <br>
+            <a href="javascript:void(0);" class="join-button discord" onclick="showPopup('https://discord.com/invite/YmtWS9SV9e', 'dccm_logo.jpg')"><img src="discord_logo.png" alt="Discord Logo">Discord</a>
+            <br>
+            <a href="javascript:void(0);" class="whatsapp-button whatsapp" onclick="showPopup('https://chat.whatsapp.com/G1qM2RWHGeP8A05QSJfspD', 'gcserver_logo.jpeg')"><img src="whatsapp_logo.png" alt="WhatsApp Logo">WhatsApp</a>
+            <br>
+            <a href="javascript:void(0);" class="join-button saluran" onclick="showPopup('https://whatsapp.com/channel/0029VafmQW16mYPEUXAXNw1q', 'saluran_logo.jpg')"><img src="saluran_logo.jpg" alt="Saluran Logo">Saluran</a>
+            <br>
+        </section>
+        <section id="join">
+            <h2>Follow My</h2>
+            <br>
+            <a href="javascript:void(0);" class="join-button youtube" onclick="showPopup('https://www.youtube.com/@Laxeewho', 'youtube_logo.jpeg')"><img src="youtube_logo.png" alt="YouTube Logo">YouTube</a>
+            </br>
+            <a href="javascript:void(0);" class="join-button tiktok" onclick="showPopup('https://chat.whatsapp.com/G1qM2RWHGeP8A05QSJfspD', 'tt_logo.jpeg')"><img src="tt_logo.png" alt="Tiktok Logo">TikTok</a>
+            <br>
+            <a href="javascript:void(0);" class="join-button facebook" onclick="showPopup('https://www.facebook.com/profile.php?id=100094260257808&mibextid=ZbWKwL', 'fb_logo.jpg')"><img src="fb_logo.png" alt="Facebook Logo">Facebook</a>
+            <br>
+         </section>
+    </main>
+    <footer>
+        <p>&copy;LAXMC Community | Website Original</p>
+    </footer>
+
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup" id="popup">
+        <img id="popup-image" src="" alt="Popup Logo">
+        <p>Apakah Anda ingin melanjutkan?</p>
+        <button id="popup-yes">Iya</button>
+        <button onclick="hidePopup()">Tidak</button>
+    </div>
+
+    <audio id="click-sound" src="sound_klik.mp3"></audio>
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const images = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
+        let currentIndex = 0;
+
+        const logoLeft = document.getElementById("logo-left");
+        const logoRight = document.getElementById("logo-right");
+
+        function changeImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            logoLeft.src = images[currentIndex];
+            logoRight.src = images[currentIndex];
+        }
+
+        setInterval(changeImage, 3000); // Ganti gambar setiap 3 detik
+    });
+   </script>
+    <script>
+        function toggleRules() {
+            var rulesText = document.getElementById('rules-text');
+            var showButton = document.getElementById('show-rules-btn');
+            var hideButton = document.getElementById('hide-rules-btn');
+
+            if (rulesText.style.display === 'none') {
+                rulesText.style.display = 'block';
+                showButton.style.display = 'none';
+                hideButton.style.display = 'inline-block';
+            } else {
+                rulesText.style.display = 'none';
+                showButton.style.display = 'inline-block';
+                hideButton.style.display = 'none';
+            }
+        }
+
+        function showPopup(link, imageSrc) {
+            var popupOverlay = document.getElementById('popup-overlay');
+            var popup = document.getElementById('popup');
+            var popupImage = document.getElementById('popup-image');
+            var popupYes = document.getElementById('popup-yes');
+            var clickSound = document.getElementById('click-sound');
+
+            popupImage.src = imageSrc;
+            popupOverlay.style.display = 'block';
+            popup.style.display = 'block';
+
+            clickSound.currentTime = 0; // Reset waktu audio ke awal
+            clickSound.play(); // Putar suara klik
+
+            popupYes.onclick = function() {
+                window.location.href = link;
+            }
+        }
+
+        function hidePopup() {
+            var popupOverlay = document.getElementById('popup-overlay');
+            var popup = document.getElementById('popup');
+
+            popupOverlay.style.display = 'none';
+            popup.style.display = 'none';
+        }
+    </script>
+           <!--
+    Kredit:
+    Pembangun: Laxee
+    Desainer: Laxee
+    Konten: LAXEEWHO?
+
+    Catatan: Website ini dilindungi dari phising, hacking, dan ancaman. Pelaporan yang tidak berdasar akan ditindak tegas.
+    -->
+</body>
+</html>
